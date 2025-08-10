@@ -73,16 +73,16 @@
             color: #153e54;
             margin: 0 0 15px;
         }
-        .email-form input[type="email"] {
+        .email-form input[type="email"], .email-form input[type="text"] {
             padding: 10px;
             font-size: 16px;
             width: 300px;
             max-width: 100%;
             border: 1px solid #153e54;
             border-radius: 5px;
-            margin-right: 10px;
+            margin: 5px 10px 5px 0;
         }
-        .email-form button {
+        .email-form input[type="submit"] {
             padding: 10px 20px;
             background-color: #ffffff;
             color: #153e54;
@@ -92,14 +92,9 @@
             font-weight: bold;
             cursor: pointer;
         }
-        .email-form button:hover {
+        .email-form input[type="submit"]:hover {
             background-color: #153e54;
             color: white;
-        }
-        .email-form .message {
-            margin-top: 10px;
-            font-size: 16px;
-            color: #153e54;
         }
         /* 圖片區域樣式 */
         .banner-image {
@@ -177,7 +172,7 @@
 <body>
     <!-- 頁首 -->
     <header class="header">
-        <img src="Precision%20Logo.png" alt="公司標誌">
+        <img src="precision%20Logo.png" alt="公司標誌">
         <h1>精準會計師事務所有限公司<br>Precision Insights CPA Limited</h1>
     </header>
 
@@ -230,10 +225,12 @@
 
     <!-- 提交框 -->
     <section class="email-form">
-        <p>留下您的電子郵件，我們將與您聯繫以提供專業服務！</p>
-        <input type="email" id="emailInput" placeholder="輸入您的電子郵件" required>
-        <button onclick="submitEmail()">提交</button>
-        <p id="formMessage" class="message"></p>
+        <p>留下您的姓名和電子郵件，我們將與您聯繫以提供專業服務！</p>
+        <form action="YOUR_GOOGLE_FORM_ACTION_URL" method="POST" target="_blank">
+            <input type="text" name="entry.987654321" placeholder="輸入您的姓名" required>
+            <input type="email" name="entry.1234567890" placeholder="輸入您的電子郵件" required>
+            <input type="submit" value="提交">
+        </form>
     </section>
 
     <!-- 頁腳 -->
@@ -242,33 +239,5 @@
         <p>電話：(852) 98342680</p>
         <p>地址：香港九龍土瓜灣道84號環凱廣場10樓1003室</p>
     </footer>
-
-    <script>
-        function submitEmail() {
-            const emailInput = document.getElementById('emailInput');
-            const formMessage = document.getElementById('formMessage');
-            const email = emailInput.value.trim();
-
-            if (!email) {
-                formMessage.textContent = '請輸入有效的電子郵件地址！';
-                formMessage.style.color = '#ff0000';
-                return;
-            }
-
-            // 簡單的電子郵件格式驗證
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                formMessage.textContent = '請輸入正確的電子郵件格式！';
-                formMessage.style.color = '#ff0000';
-                return;
-            }
-
-            // 模擬提交成功
-            formMessage.textContent = '感謝您的提交！我們將很快與您聯繫。';
-            formMessage.style.color = '#153e54';
-            emailInput.value = ''; // 清空輸入框
-        }
-    </script>
 </body>
 </html>
-
